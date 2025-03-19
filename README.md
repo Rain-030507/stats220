@@ -1,11 +1,16 @@
 # stats220
 
-This is my repo for STATS 220. 
+## About me:
 
-A little about me:
+* From China, Jiangsu, [Nanjing](https://en.wikipedia.org/wiki/Nanjing)
+* Have a dog
 
-- I am undertaking a degree in data science
-- I am taking STATS 220 because this is my require programme
-- I am interested in learning about R code
+## About my hometown:
 
-A meme that captures how I currently feel about my university studies is ![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
+1. Cold from November to April and hot from June to September
+2. Hold *Qinhuai Lantern Fair* in January or February, depending on when the Spring Festival starts
+3. Built by the **Yangtze River**, which is the longest river in Asia
+
+### Nice to meet you! 
+
+![](https://github.com/user-attachments/assets/549a66a5-f2c0-45e3-a4c7-fda8e9ac938d)
