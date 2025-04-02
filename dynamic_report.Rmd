@@ -128,7 +128,7 @@ latest_data %>%
 
 ```
 
-From the bar chart above, we can see that shorts gets higher likes rate than videos.
+From the bar chart above, we can see that shorts get a higher likes rate than videos. 
 
 ## Furthermore
 
@@ -175,4 +175,4 @@ latest_data %>%
 
 ```
 
-From the above scatter plot, we can see that there is a decreased relationship between the number of views and the likes rate, which means the more in views, the lower in likes rate. However, there is no obvious relationship between the number of subscriptions and likes rate.
+From the above scatter plot, we can see that there is a decreased relationship between the number of views and the like rate, which means the more in views, the lower in likes rate. However, there is no obvious relationship between the number of subscriptions and the likes rate.
