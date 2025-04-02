@@ -1,0 +1,182 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css echo=FALSE}
+body{
+    background-color: #feffe4;
+}
+h2{
+  color: red
+}
+h3{
+  color: #3200ff
+}
+p{
+  font-family: Georgia;
+  color: #003360;
+}
+```
+
+## About the data
+
+### Sample size
+
+The sheet contains two types of data, and this is a bar chart showing sample size.
+
+```{r}
+library(tidyverse)
+
+logged_data <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vT1s235dHjiX2r7mUTbtlDm5H_-evr2XGAAXOp3RW4p1_vHsQ5-TG258yudTTZmQxJhnr-7UtrVp3ge/pub?output=csv')
+
+latest_data <- logged_data %>%
+  rename(Type = 2,
+         Views = 3,
+         Likes = 4,
+         Author = 5,
+         Subscribers = 6,
+         Date = 7,
+         Title = 8)
+
+# Which one gets higher number of samples?
+latest_data %>%
+  ggplot() +
+    geom_bar(aes(x = Type)) +
+  labs(title = "Videos/shorts on Youtube trending",
+       subtitle = "Comparing numbers of two types of vedios",
+       caption = "Source: Youtube")
+
+# Which one gets higher views?
+latest_data %>%
+  ggplot() +
+    geom_bar(aes(x = Views, fill = Type)) +
+  labs(title = "Which one gets higher views?",
+       subtitle = "Comparing numbers of views with two types of videos",
+       caption = "Source: Youtube",
+       x = "Number of views")  
+
+paste("With", 
+      length(latest_data$Type), 
+      "Samples")
+
+```
+
+### Mean of views/subscribers/likes
+
+```{r}
+library(tidyverse)
+
+logged_data <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vT1s235dHjiX2r7mUTbtlDm5H_-evr2XGAAXOp3RW4p1_vHsQ5-TG258yudTTZmQxJhnr-7UtrVp3ge/pub?output=csv')
+
+latest_data <- logged_data %>%
+  rename(Type = 2,
+         Views = 3,
+         Likes = 4,
+         Author = 5,
+         Subscribers = 6,
+         Date = 7,
+         Title = 8)
+
+paste("The mean views of",
+      length(latest_data$Type),
+      "samples is",
+      mean(latest_data$Views)%>%round(0))
+
+paste("The mean subscribers of",
+      length(latest_data$Type),
+      "samples is",
+      mean(latest_data$Subscribers)%>%round(0))
+
+paste("The mean likes of",
+      length(latest_data$Type),
+      "samples is",
+      mean(latest_data$Likes)%>%round(0))
+
+```
+
+However we can see there is a big difference between mean of likes and rest, therefore we can create another variable that define the likes rate of each video/short.
+
+```{r}
+library(tidyverse)
+
+logged_data <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vT1s235dHjiX2r7mUTbtlDm5H_-evr2XGAAXOp3RW4p1_vHsQ5-TG258yudTTZmQxJhnr-7UtrVp3ge/pub?output=csv')
+
+latest_data <- logged_data %>%
+  rename(Type = 2,
+         Views = 3,
+         Likes = 4,
+         Author = 5,
+         Subscribers = 6,
+         Date = 7,
+         Title = 8)
+
+# To figure out the likes rate
+likes_rate <- (latest_data$Likes/latest_data$Views) %>% round(4)
+
+paste("The mean likes rate of",
+      length(latest_data$Type),
+      "samples is",
+      mean(likes_rate) %>% round(4))
+
+# Which one gets higher likes rate?
+latest_data %>%
+  ggplot() +
+    geom_bar(aes(x = likes_rate, fill = Type)) +
+  labs(title = "Which one gets higher likes rate?",
+       subtitle = "Comparing numbers of likes rate with two types of videos",
+       caption = "Source: Youtube",
+       x = "Like rate",
+       y = "Number of videos/shorts")
+
+```
+
+## Arrange the data
+
+### Is there a relation between views/subscribers and like rate?
+
+```{r}
+library(tidyverse)
+
+logged_data <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vT1s235dHjiX2r7mUTbtlDm5H_-evr2XGAAXOp3RW4p1_vHsQ5-TG258yudTTZmQxJhnr-7UtrVp3ge/pub?output=csv')
+
+latest_data <- logged_data %>%
+  rename(Type = 2,
+         Views = 3,
+         Likes = 4,
+         Author = 5,
+         Subscribers = 6,
+         Date = 7,
+         Title = 8)
+
+# To figure out the likes rate
+likes_rate <- (latest_data$Likes/latest_data$Views) %>% round(4)
+
+# Higher views means higher likes rate?
+latest_data %>%
+  ggplot() +
+    geom_point(aes(x = Views, y = likes_rate, fill = Type, colour = Type)) +
+    geom_smooth(aes(x = Views, y = likes_rate), method = "lm", se = FALSE) +
+  labs(title = "Higher views, higher likes rate?",
+       subtitle = "Comparing number of views and likes rate with two types of videos",
+       caption = "Source: Youtube",
+       x = "Number of views",
+       y = "Like rate")
+
+# Higher subscribers means higher likes rate?
+latest_data %>%
+  ggplot() +
+  geom_point(aes(x = Subscribers, y = likes_rate, fill = Type, colour = Type)) +
+  geom_smooth(aes(x = Subscribers, y = likes_rate), method = "lm", se = FALSE) +
+  labs(title = "Higher subscribers, higher likes rate?",
+       subtitle = "Comparing number of subscribers and likes rate with two types of videos",
+       caption = "Source: Youtube",
+       x = "Number of subscribers",
+       y = "Number of likes_rate")
+
+```
