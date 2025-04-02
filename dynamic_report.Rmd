@@ -52,15 +52,6 @@ latest_data %>%
        subtitle = "Comparing numbers of two types of vedios",
        caption = "Source: Youtube")
 
-# Which one gets higher views?
-latest_data %>%
-  ggplot() +
-    geom_bar(aes(x = Views, fill = Type)) +
-  labs(title = "Which one gets higher views?",
-       subtitle = "Comparing numbers of views with two types of videos",
-       caption = "Source: Youtube",
-       x = "Number of views")  
-
 paste("With", 
       length(latest_data$Type), 
       "Samples")
