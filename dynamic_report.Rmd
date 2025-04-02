@@ -127,6 +127,7 @@ latest_data %>%
        y = "Number of videos/shorts")
 
 ```
+
 From the bar chart above, we can see that shorts gets higher likes rate than videos.
 
 ## Furthermore
