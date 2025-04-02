@@ -48,9 +48,9 @@ latest_data <- logged_data %>%
 latest_data %>%
   ggplot() +
     geom_bar(aes(x = Type)) +
-  labs(title = "Videos/shorts on Youtube trending",
+  labs(title = "Videos/shorts on YouTube trending",
        subtitle = "Comparing numbers of two types of vedios",
-       caption = "Source: Youtube")
+       caption = "Source: YouTube")
 
 paste("With", 
       length(latest_data$Type), 
@@ -122,7 +122,7 @@ latest_data %>%
     geom_bar(aes(x = likes_rate, fill = Type)) +
   labs(title = "Which one gets higher likes rate?",
        subtitle = "Comparing numbers of likes rate with two types of videos",
-       caption = "Source: Youtube",
+       caption = "Source: YouTube",
        x = "Likes rate",
        y = "Number of videos/shorts")
 
@@ -156,7 +156,7 @@ latest_data %>%
     geom_smooth(aes(x = Views, y = likes_rate), method = "lm", se = FALSE) +
   labs(title = "Higher views, higher likes rate?",
        subtitle = "Comparing number of views and likes rate with two types of videos",
-       caption = "Source: Youtube",
+       caption = "Source: YouTube",
        x = "Number of views",
        y = "Likes rate")
 
@@ -167,7 +167,7 @@ latest_data %>%
   geom_smooth(aes(x = Subscribers, y = likes_rate), method = "lm", se = FALSE) +
   labs(title = "Higher subscribers, higher likes rate?",
        subtitle = "Comparing number of subscribers and likes rate with two types of videos",
-       caption = "Source: Youtube",
+       caption = "Source: YouTube",
        x = "Number of subscribers",
        y = "Likes rate")
 
