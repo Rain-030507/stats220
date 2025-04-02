@@ -91,7 +91,8 @@ paste("The mean likes of",
 
 ```
 
-However we can see there is a big difference between mean of likes and rest, therefore we can create another variable that define the likes rate of each video/short.
+We can see that there is a big difference between the average of likes and the other values, which may indicate that likes reflect the approval of its content.
+Maybe we can create another variable to define the likes rate of each video/short.
 
 ```{r}
 library(tidyverse)
@@ -131,7 +132,7 @@ latest_data %>%
 
 ### Is there a relation between views/subscribers and like rate?
 
-```{r}
+```{r show_col_types = FALSE}
 library(tidyverse)
 
 logged_data <- read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vT1s235dHjiX2r7mUTbtlDm5H_-evr2XGAAXOp3RW4p1_vHsQ5-TG258yudTTZmQxJhnr-7UtrVp3ge/pub?output=csv')
@@ -171,3 +172,5 @@ latest_data %>%
        y = "Like rate")
 
 ```
+
+From the above scatter plot, we can see that there is a decreasing relationship between the number of views and the like rate, which means the more in views, the lower in like rate. However, there is no obvious relationship between the number of subscriptions and like rate.
