@@ -175,4 +175,4 @@ latest_data %>%
 
 ```
 
-From the above scatter plot, we can see that there is a decreasing relationship between the number of views and the likes rate, which means the more in views, the lower in likes rate. However, there is no obvious relationship between the number of subscriptions and likes rate.
+From the above scatter plot, we can see that there is a decreased relationship between the number of views and the likes rate, which means the more in views, the lower in likes rate. However, there is no obvious relationship between the number of subscriptions and likes rate.
