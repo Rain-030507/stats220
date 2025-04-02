@@ -177,6 +177,6 @@ latest_data %>%
        subtitle = "Comparing number of subscribers and likes rate with two types of videos",
        caption = "Source: Youtube",
        x = "Number of subscribers",
-       y = "Number of likes_rate")
+       y = "Like rate")
 
 ```
